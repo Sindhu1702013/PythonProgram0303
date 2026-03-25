@@ -4,6 +4,7 @@
 # The pickle module translates an in-memory Python object into a serialized byte stream—a string of bytes
 # that can be written to any file-like object.
 
+import os
 import pickle
 
 def storeData():
@@ -16,12 +17,14 @@ def storeData():
     db['Omkar'] = Omkar
     db['Jagdish'] = Jagdish
 
-    dbfile = open('examplePickle', 'ab')        # Its important to use binary mode
+    filepath = os.getenv('PICKLE_FILE_PATH', 'examplePickle')
+    dbfile = open(filepath, 'ab')      # Its important to use binary mode
     pickle.dump(db, dbfile)                     # source, destination
     dbfile.close()
 
 def loadData():
-    dbfile = open('examplePickle', 'rb')        # for reading also binary mode is important
+    filepath = os.getenv('PICKLE_FILE_PATH', 'examplePickle')
+    dbfile = open(filepath, 'rb')        # for reading also binary mode is important
     db = pickle.load(dbfile)
     for keys in db:
         print(keys,'=>',db[keys])
