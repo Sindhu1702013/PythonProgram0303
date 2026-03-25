@@ -9,7 +9,7 @@
 # ( 1 + 2 + 3 + 6 ) / 2 = 6. The next perfect number is 28 = 1 + 2 + 4 + 7 + 14. This is followed by the
 # perfect numbers 496 and 8128.
 
-def perfectNumber(number):
+def perfect_number(number):
     sum = 0
     for x in range(1, number):
         if number % x == 0:
@@ -17,5 +17,5 @@ def perfectNumber(number):
     return sum == number
 
 if __name__ == '__main__':
-    print(perfectNumber(6)) # True
-    print(perfectNumber(3)) # False
+    print(perfect_number(6)) # True
+    print(perfect_number(3)) # False
