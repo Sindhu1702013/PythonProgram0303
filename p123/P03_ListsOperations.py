@@ -19,7 +19,8 @@ myList.append(10)
 print('Append:',myList)
 
 #To find the index of a particular element
-print('Index of element \'6\':',myList.index(6)) #returns index of element '6'
+if 6 in myList:
+    print('Index of element \'6\':',myList.index(6))
 
 #To sort the list
 myList.sort()
