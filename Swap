@@ -1,0 +1,35 @@
+
+#Author: OMKAR PATHAK
+#This programs shows the rules for variable scope
+
+# LEGB Rule: Local, Enclosing, Global, Built-in
+
+x = 'Global x'
+
+def swap(a, b):
+    """
+    Swap two numerical values and return them as a swapped tuple.
+    Demonstrates local variable scope and parameter passing.
+    """
+    # Temporary variable to hold the first value
+    temp = a
+    a = b
+    b = temp
+    return a, b
+
+def test():
+    #global x
+    y = 'Local y'
+    x = 'Local x'
+    print(x +', '+ y) #prints 'Local x' and  'Local y'
+    
+    # Demonstrate swap function with local scope
+    num1 = 10
+    num2 = 20
+    print(f'\nBefore swap: num1 = {num1}, num2 = {num2}')
+    num1, num2 = swap(num1, num2)
+    print(f'After swap: num1 = {num1}, num2 = {num2}')
+
+if __name__ == '__main__':
+    test()
+    print(x) #prints 'Global x'
