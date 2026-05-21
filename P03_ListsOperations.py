@@ -1,47 +1,119 @@
-#Author: OMKAR PATHAK
-#This program gives examples about various list operations
+# Author: OMKAR PATHAK
+# This program determines whether a given number is even or odd
+# It includes input validation and supports repeated checks with a user-friendly exit mechanism
 
-#Syntax: list[start: end: step]
+def check_even_odd(number):
+    """
+    Determines whether a given number is even or odd.
+    
+    Args:
+        number (int): The number to check
+        
+    Returns:
+        str: A string indicating whether the number is even or odd
+    """
+    if number % 2 == 0:
+        return f"{number} is an Even number"
+    else:
+        return f"{number} is an Odd number"
 
-myList = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-#index    0  1  2  3  4  5  6  7  8
-#        -9 -8 -7 -6 -5 -4 -3 -2 -1
 
-#List Slicing
-print('Original List:',myList)
-print('First Element:',myList[0]) #Prints the first element of the list or 0th element of the list
-print('Element at 2nd Index position:',myList[2]) #Prints the 2nd element of the list
-print('Elements from 0th Index to 4th Index:',myList[0: 5]) #Prints elements of the list from 0th index to 4th index. IT DOESN'T INCLUDE THE LAST INDEX
-print('Element at -7th Index:',myList[-7]) #Prints the -7th or 3rd element of the list
+def get_valid_integer():
+    """
+    Prompts the user for input and validates that it is a valid integer.
+    Allows user to enter 'quit' to exit the program.
+    
+    Returns:
+        int or str: The valid integer entered by the user, or 'quit' to exit
+    """
+    while True:
+        user_input = input("
+Enter a number (or 'quit' to exit): ").strip()
+        
+        # Check if user wants to exit
+        if user_input.lower() == 'quit':
+            return 'quit'
+        
+        # Check if input is empty
+        if not user_input:
+            print("Error: Input cannot be empty. Please enter a valid integer.")
+            continue
+        
+        # Try to convert to integer
+        try:
+            number = int(user_input)
+            return number
+        except ValueError:
+            print(f"Error: '{user_input}' is not a valid integer. Please enter a numeric value.")
 
-#To append an element to a list
-myList.append(10)
-print('Append:',myList)
 
-#To find the index of a particular element
-print('Index of element \'6\':',myList.index(6)) #returns index of element '6'
+def main():
+    """
+    Main program loop that continuously prompts the user to check if numbers are even or odd.
+    """
+    print("=" * 50)
+    print("Even or Odd Number Checker")
+    print("=" * 50)
+    
+    while True:
+        # Get valid integer input from user
+        user_number = get_valid_integer()
+        
+        # Check if user wants to quit
+        if user_number == 'quit':
+            print("
+Thank you for using the Even or Odd Checker. Goodbye!")
+            break
+        
+        # Display the result
+        result = check_even_odd(user_number)
+        print(result)
 
-#To sort the list
-myList.sort()
 
-#To pop last element
-print('Poped Element:',myList.pop())
+if __name__ == "__main__":
+    main()
 
-#To remove a particular element from the lsit BY NAME
-myList.remove(6)
-print('After removing \'6\':',myList)
+# Author: OMKAR PATHAK
 
-#To insert an element at a specified Index
-myList.insert(5, 6)
-print('Inserting \'6\' at 5th index:',myList)
+# This program finds the largest of three numbers with robust input validation
 
-#To count number of occurences of a element in the list
-print('No of Occurences of \'1\':',myList.count(1))
+def find_largest(num1, num2, num3):
+    '''This function returns the largest of three numbers'''
+    return max(num1, num2, num3)
 
-#To extend a list that is insert multiple elemets at once at the end of the list
-myList.extend([11,0])
-print('Extending list:',myList)
 
-#To reverse a list
-myList.reverse()
-print('Reversed list:',myList)
+if __name__ == '__main__':
+    print("Welcome to the Largest of Three Numbers Program!")
+    print("=" * 50)
+    
+    # Input validation loop for first number
+    while True:
+        try:
+            num1_input = input("Enter the first number: ")
+            num1 = float(num1_input) if '.' in num1_input else int(num1_input)
+            break
+        except ValueError:
+            print("Error: Please enter a valid numerical value.")
+    
+    # Input validation loop for second number
+    while True:
+        try:
+            num2_input = input("Enter the second number: ")
+            num2 = float(num2_input) if '.' in num2_input else int(num2_input)
+            break
+        except ValueError:
+            print("Error: Please enter a valid numerical value.")
+    
+    # Input validation loop for third number
+    while True:
+        try:
+            num3_input = input("Enter the third number: ")
+            num3 = float(num3_input) if '.' in num3_input else int(num3_input)
+            break
+        except ValueError:
+            print("Error: Please enter a valid numerical value.")
+    
+    # Find and display the largest number
+    result = find_largest(num1, num2, num3)
+    print("=" * 50)
+    print(f"The largest number is: {result:.2f}")
